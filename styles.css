@@ -1,0 +1,68 @@
+body {
+  font-family: 'Inter', sans-serif;
+  margin: 0;
+  padding: 2rem;
+  background: #f5f5f5;
+}
+h1 {
+  text-align: center;
+  color: #1b5e20;
+}
+.year {
+  margin: 2rem 0;
+}
+.cuatrimestre {
+  background: #e8f5e9;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  border-radius: 12px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+.cuatrimestre h2 {
+  margin-top: 0;
+  color: #2e7d32;
+}
+.materias {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1rem;
+}
+.materia {
+  background: white;
+  padding: 1rem;
+  border-radius: 8px;
+  border-left: 6px solid;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+  position: relative;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+.materia.completed {
+  text-decoration: line-through;
+  opacity: 0.6;
+}
+.materia.cfb { border-color: #0288d1; }
+.materia.cfe { border-color: #7b1fa2; }
+.materia.cic { border-color: #f9a825; }
+.materia.cfc { border-color: #43a047; }
+.materia:hover::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  background: #333;
+  color: white;
+  padding: 0.5rem;
+  border-radius: 4px;
+  font-size: 0.85rem;
+  top: 100%;
+  left: 0;
+  white-space: pre-line;
+  z-index: 10;
+}
+
+
+.materia .nota {
+  margin-top: 0.5rem;
+  font-size: 0.9rem;
+  color: #333;
+  font-weight: bold;
+}
