@@ -1,4 +1,4 @@
-document.querySelectorAll('.materia').forEach(materia => {
+function agregarEventosMateria(materia) {
   materia.addEventListener('click', () => {
     materia.classList.toggle('completed');
     guardarEstado();
@@ -19,11 +19,11 @@ document.querySelectorAll('.materia').forEach(materia => {
       guardarEstado();
     }
   });
-});
+}
 
 function guardarEstado() {
   const estados = [];
-  document.querySelectorAll('.materia').forEach((materia, i) => {
+  document.querySelectorAll('.materia').forEach(materia => {
     estados.push({
       completada: materia.classList.contains('completed'),
       nota: materia.querySelector('.nota')?.textContent || ''
@@ -35,6 +35,7 @@ function guardarEstado() {
 function cargarEstado() {
   const estados = JSON.parse(localStorage.getItem('estadoMaterias') || '[]');
   document.querySelectorAll('.materia').forEach((materia, i) => {
+    agregarEventosMateria(materia);
     const estado = estados[i];
     if (estado) {
       if (estado.completada) materia.classList.add('completed');
@@ -49,3 +50,4 @@ function cargarEstado() {
 }
 
 window.addEventListener('load', cargarEstado);
+
